@@ -15,7 +15,12 @@ namespace Repository.Migrations
                     FullName = table.Column<string>(nullable: false),
                     EmailId = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
-                    MobileNumber = table.Column<string>(nullable: false)
+                    MobileNumber = table.Column<string>(nullable: false),
+                    PanNumber = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    State = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

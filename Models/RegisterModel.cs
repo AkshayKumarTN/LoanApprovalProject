@@ -52,5 +52,41 @@ namespace Models
         /// </value>
         [Required]
         public string MobileNumber { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the Pan number.
+        /// </summary>
+        [Required]
+        public string PanNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the address.
+        /// </summary>
+        /// <value>
+        /// The address.
+        /// </value>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Gets or sets the city.
+        /// </summary>
+        /// <value>
+        /// The city.
+        /// </value>
+        public string City { get; set; }
+
+        /// <summary>
+        /// Gets or sets the state.
+        /// </summary>
+        /// <value>
+        /// The state.
+        /// </value>
+        public string State { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ZipCode.
+        /// </summary>
+        public string ZipCode { get; set; }
     }
 }
