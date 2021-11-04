@@ -4,6 +4,7 @@
     using global::Models;
     using Manager.Interface;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
 
     /// <summary>
     /// Controller for User API
@@ -17,14 +18,16 @@
         /// The manager
         /// </summary>
         private readonly IUserManager manager;
+        private readonly ILogger<UserController> _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserController"/> class.
         /// </summary>
         /// <param name="manager">The manager.</param>
-        public UserController(IUserManager manager)
+        public UserController(IUserManager manager, ILogger<UserController> logger)
         {
             this.manager = manager;
+            _logger = logger;
         }
 
         /// <summary>
@@ -38,18 +41,22 @@
         {
             try
             {
+                _logger.LogWarning("TRYING TO REGISTER !!!");
                 var result = this.manager.Register(userData);
                 if (result == true)
                 {
+                    _logger.LogWarning("Registration Successfull!!!!");
                     return this.Ok(new ResponseModel<string>() { Status = true, Message = "Registration Successfull!" });
                 }
                 else
                 {
+                    _logger.LogWarning("Registration Unsuccessfull!!!");
                     return this.BadRequest(new ResponseModel<string>() { Status = false, Message = "Registration Unsuccessfull!" });
                 }
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex,ex.Message);
                 return this.NotFound(new ResponseModel<string>() { Status = false, Message = ex.Message });
             }
         }
@@ -65,18 +72,22 @@
         {
             try
             {
+                _logger.LogWarning("TRYING TO LOGIN !!!");
                 var result = this.manager.Login(loginData);
                 if (result != null)
                 {
+                    _logger.LogWarning("LOGIN SUCCESS!!!");
                     return this.Ok(new { Status = true, Message = "Login Successful!!!", Data = result });
                 }
                 else
                 {
+                    _logger.LogWarning("LOGIN UNSUCCESS!!!");
                     return this.BadRequest(new ResponseModel<string>() { Status = false, Message = "Login Unsuccessfull!" });
                 }
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return this.NotFound(new ResponseModel<string>() { Status = false, Message = ex.Message });
             }
         }
