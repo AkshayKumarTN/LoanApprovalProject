@@ -31,7 +31,8 @@ namespace LoanApprovalProject
                 option => option.UseSqlServer(this.Configuration.GetConnectionString("UserDbConnection")));
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserManager, UserManager>();
-
+            services.AddTransient<IFormManager, FormManager>();
+            services.AddTransient<IFormRepository, FormRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(

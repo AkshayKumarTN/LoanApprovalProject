@@ -20,5 +20,8 @@
         /// Gets or sets Field 'Users' of type DataBaseSet
         /// </summary>
         public DbSet<RegisterModel> Users { get; set; }
+
+        public DbSet<FormModel> Form { get; set; }
+        public DbSet<PropertyModel> Property { get; set; }
     }
 }

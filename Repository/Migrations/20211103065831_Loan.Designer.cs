@@ -9,7 +9,7 @@ using Repository.Context;
 namespace Repository.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20211103064634_Loan")]
+    [Migration("20211103065831_Loan")]
     partial class Loan
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
